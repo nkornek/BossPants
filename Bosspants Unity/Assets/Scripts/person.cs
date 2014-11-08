@@ -1,23 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class person : MonoBehaviour
+public class Person : MonoBehaviour
 {
 
     public GameObject player;
-    public float triggerDistance;
     public int speed;
+	public bool triggered;
+
     // Use this for initialization
     void Start()
     {
-    
+  
     }
     
     // Update is called once per frame
     void Update()
     {
             
-        if (Vector2.Distance(transform.position, player.transform.position) < triggerDistance)
+        if (triggered)
         {
            /* if (transform.position.x - player.transform.position.x < 0)
             {
@@ -31,8 +32,13 @@ public class person : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter (Collision collisionInfo)
+    void OnCollisionEnter2D (Collision2D col)
     {
-
+		if (col.transform.tag == "Player")
+		{
+			print ("collided");
+			player.GetComponent <Player>() .addPerson();
+			Destroy (gameObject);
+		}
     }
 }
