@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Character_movement : MonoBehaviour {
 	public float minSpeed, maxSpeed, moveSpeed, jumpForce, maxJumpForce;
+	public int jumpDecay;
 	public bool jumping;
 
 
@@ -28,6 +29,7 @@ public class Character_movement : MonoBehaviour {
 		{
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
 			jumping = true;
+			ControlJump();
 		}
 
 		//reset the speed
@@ -46,13 +48,15 @@ public class Character_movement : MonoBehaviour {
 	}
 
 	void ControlJump() {
-	
+		if (jumpForce > 0)
+		jumpForce -= maxJumpForce / jumpDecay;
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.transform.tag == "Ground")
 		{
 			jumping = false;
+			jumpForce = maxJumpForce;
 		}
 	}
 }
