@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Character_movement : MonoBehaviour {
-	public float minspeed, maxSpeed, moveSpeed, jumpForce, maxJumpForce;
+	public float minSpeed, maxSpeed, moveSpeed, jumpForce, maxJumpForce;
 	public bool jumping;
 
 
@@ -17,15 +17,23 @@ public class Character_movement : MonoBehaviour {
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
 			transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime, Space.Self);
+			ControlSpeed();
 		}
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.Self);
+			ControlSpeed();
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
 			jumping = true;
+		}
+
+		//reset the speed
+		if (!Input.GetKey(KeyCode.LeftArrow) & !Input.GetKey(KeyCode.RightArrow))
+		{
+			moveSpeed = minSpeed;
 		}
 	
 	}
@@ -33,8 +41,12 @@ public class Character_movement : MonoBehaviour {
 	void ControlSpeed() {
 		if (moveSpeed < maxSpeed)
 		{
-			moveSpeed += maxSpeed/30;
+			moveSpeed += (maxSpeed - minSpeed)/60;
 		}
+	}
+
+	void ControlJump() {
+	
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
