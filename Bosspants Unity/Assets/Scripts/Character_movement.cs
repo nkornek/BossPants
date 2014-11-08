@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Character_movement : MonoBehaviour {
-	public float minspeed, maxSpeed, moveSpeed, jumpForce;
+	public float minspeed, maxSpeed, moveSpeed, jumpForce, maxJumpForce;
 	public bool jumping;
 
 
