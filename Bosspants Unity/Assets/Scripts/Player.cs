@@ -54,8 +54,7 @@ public class Player : MonoBehaviour {
 
 	public void addPerson ()
 	{
-		peoplePantsed++;
-	
+		peoplePantsed++;	
 	}
 
 	public void CallPeople() 
