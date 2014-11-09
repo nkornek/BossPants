@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 98e2584b92d97ce48a5a9dc8a3842bc4
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: mini mega enemy2_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
