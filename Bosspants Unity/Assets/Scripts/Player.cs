@@ -5,13 +5,14 @@ public class Player : MonoBehaviour {
 
 	public float triggerDistance;
 	public int peoplePantsed, peopleToPants;
-	public float chargeTime, chargeTotal;
 	public GameObject[] levelPants;
 	public int level;
 
+	public float kickTime, maxKickTime, kickForce;
+	public bool kicking;
+
 	// Use this for initialization
 	void Start () {
-		chargeTime = chargeTotal;
 	}
 	
 	// Update is called once per frame
@@ -29,22 +30,14 @@ public class Player : MonoBehaviour {
 	//kick!
 		if (level == 2)
 		{
-			if (Input.GetKey(KeyCode.S))
+			if (Input.GetKey(KeyCode.S) & !kicking & kickTime < maxKickTime)
 			{
-				chargeTime -= Time.deltaTime;
+				kickTime += Time.deltaTime;
 			}
-			if (Input.GetKeyUp(KeyCode.S))
+			if (Input.GetKeyUp(KeyCode.S) & !kicking)
 			{
-				print ("test");
-				if (chargeTime <= 0)
-				{
-					//bicycle kick
-				}
-				else
-				{
-					levelPants[level].GetComponent<Animator>().SetTrigger("Kick");
-				}
-				chargeTime = chargeTotal;
+				kicking = true;
+				levelPants[level].GetComponent<Animator>().SetBool("Kicking", true);
 			}
 		}
 		else
@@ -52,6 +45,18 @@ public class Player : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.S))
 			{
 				levelPants[level].GetComponent<Animator>().SetTrigger("Kick");
+			}
+		}
+
+		//launch bicycle kick
+		if (kicking)
+		{
+			kickTime -= Time.deltaTime;
+			rigidbody2D.AddForce( Vector2.right * transform.localScale.x * kickForce);
+			if (kickTime <= 0)
+			{
+				kicking = false;
+				levelPants[level].GetComponent<Animator>().SetBool("Kicking", false);
 			}
 		}
 	
