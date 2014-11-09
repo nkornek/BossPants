@@ -1,7 +1,8 @@
 fileFormatVersion: 2
-guid: d7fa0acea6ed84b47a7a15a5072a68b2
+guid: 79600f0238a83b44abf117eb9da78189
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: stockick
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

@@ -15,6 +15,10 @@ public class BoomDamage : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-
+		if (coll.transform.tag == "Player")
+		{
+			//do damage things
+			coll.gameObject.GetComponent<Player>().TakeDamage();
+		}
 	}
 }
