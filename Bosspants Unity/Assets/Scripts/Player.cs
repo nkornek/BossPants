@@ -26,10 +26,7 @@ public class Player : MonoBehaviour {
 			CallPeople();
 		}
 		//for debug, will remove later
-		if (Input.GetKeyDown(KeyCode.F))
-		{
-			LevelUp();
-		}
+
 	//kick!
 		if (level == 2)
 		{
@@ -118,7 +115,9 @@ public class Player : MonoBehaviour {
 	
 	void LoadNextLevel()
 	{
+		CancelInvoke("LoadNextLevel");
 		Application.LoadLevel (Application.loadedLevel + 1);
+
 	}
 
 }
