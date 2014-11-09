@@ -52,7 +52,7 @@ public class Player : MonoBehaviour {
 		if (kicking)
 		{
 			kickTime -= Time.deltaTime;
-			rigidbody2D.AddForce( Vector2.right * transform.localScale.x * kickForce);
+			rigidbody2D.AddForce( Vector2.right * levelPants[level].transform.localScale.x * kickForce);
 			if (kickTime <= 0)
 			{
 				kicking = false;
