@@ -80,8 +80,16 @@ public class Character_movement : MonoBehaviour {
 			{
 				jumping = false;
 				levelPants[level].GetComponent<Animator>().SetBool("Jumping", false);
+				}
+			if (level == 2)
+			{
+				foreach (ParticleSystem p in levelPants[level].GetComponentsInChildren<ParticleSystem>())
+				{
+					p.Emit(5);
+				}
 			}
 		}
+			
 	}
 	
 }
