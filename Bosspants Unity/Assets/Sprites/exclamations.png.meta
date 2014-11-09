@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: df8e81e54c13fd944af5600000032c21
+guid: 6dcce22c3bd13544dab02613ae3c6421
 TextureImporter:
   fileIDToRecycleName:
-    21300000: THE FIRST PANTS LEG 1
+    21300000: exclamations
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -38,7 +38,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 500
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
