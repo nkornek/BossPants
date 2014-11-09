@@ -92,19 +92,16 @@ public class Player : MonoBehaviour {
 
 	public void TakeDamage()
 	{
-		if (peoplePantsed > damageTaken)
+		int loss = 0;
+		while (loss < peoplePantsed)
 		{
-			peoplePantsed -= damageTaken;
-			int loss = 0;
-			while (loss < damageTaken)
-			{
-				GameObject person = Instantiate(Resources.Load("person"), transform.position, Quaternion.identity) as GameObject;
-				float randomX = Random.Range(-1, 1);
-				float randomY = Random.Range(0, 1);
-				person.GetComponent<Rigidbody2D>().AddForce(new Vector2(randomX, randomY) * ejectForce);
-				loss ++;
-			}
+			GameObject person = Instantiate(Resources.Load("person"), new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity) as GameObject;
+			float randomX = Random.Range(-1, 1);
+			float randomY = Random.Range(0, 1);
+			person.GetComponent<Rigidbody2D>().AddForce(new Vector2(randomX, randomY) * ejectForce);
+			loss ++;
 		}
+		peoplePantsed = 0;
 	}
 
 }

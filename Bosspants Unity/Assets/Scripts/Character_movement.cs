@@ -20,7 +20,7 @@ public class Character_movement : MonoBehaviour {
 		{
 			if (Input.GetKey(KeyCode.LeftArrow))
 			{
-				transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime, Space.Self);
+				transform.Translate(Vector2.right * -moveSpeed * (level + 1) * Time.deltaTime, Space.Self);
 				ControlSpeed();
 				running = true;
 				levelPants[level].GetComponent<Animator>().SetBool("Running", true);
@@ -28,7 +28,7 @@ public class Character_movement : MonoBehaviour {
 			}
 			if (Input.GetKey(KeyCode.RightArrow))
 			{
-				transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.Self);
+				transform.Translate(Vector2.right * moveSpeed * (level + 1) * Time.deltaTime, Space.Self);
 				ControlSpeed();
 				levelPants[level].GetComponent<Animator>().SetBool("Running", true);
 				running = true;
@@ -39,11 +39,11 @@ public class Character_movement : MonoBehaviour {
 		{
 			jumping = true;
 			levelPants[level].GetComponent<Animator>().SetBool("Jumping", true);
-			rigidbody2D.AddForce(Vector2.up * jumpForce);
+			rigidbody2D.AddForce(Vector2.up * jumpForce * (level + 1));
 		}
 		if (jumping & Input.GetKey(KeyCode.A))
 		{
-			rigidbody2D.AddForce(Vector2.up * jumpForce);
+			rigidbody2D.AddForce(Vector2.up * jumpForce * (level + 1));
 			ControlJump();
 		}
 
