@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{87014B8E-3F69-5CA8-C3D4-86A87C7EDEE5}") = "Bosspants Unity", "Assembly-CSharp.csproj", "{E0867B8D-6272-57FF-4592-C65E6F979C6C}"
 EndProject
+Project("{87014B8E-3F69-5CA8-C3D4-86A87C7EDEE5}") = "Bosspants Unity", "Assembly-CSharp-Editor.csproj", "{07E420B3-E5AB-C499-68E3-39C04C081C82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{E0867B8D-6272-57FF-4592-C65E6F979C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0867B8D-6272-57FF-4592-C65E6F979C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0867B8D-6272-57FF-4592-C65E6F979C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07E420B3-E5AB-C499-68E3-39C04C081C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E420B3-E5AB-C499-68E3-39C04C081C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E420B3-E5AB-C499-68E3-39C04C081C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E420B3-E5AB-C499-68E3-39C04C081C82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-											GlobalSection(MonoDevelopProperties) = preSolution
+													GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

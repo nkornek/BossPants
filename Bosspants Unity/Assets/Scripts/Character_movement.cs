@@ -31,10 +31,14 @@ public class Character_movement : MonoBehaviour {
 			running = true;
 			gameObject.GetComponentInChildren<Transform>().localScale = new Vector2(1, 1);
 		}
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKeyDown(KeyCode.A))
 		{
 			jumping = true;
 			gameObject.GetComponentInChildren<Animator>().SetBool("Jumping", true);
+			rigidbody2D.AddForce(Vector2.up * jumpForce);
+		}
+		if (jumping & Input.GetKey(KeyCode.A))
+		{
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
 			ControlJump();
 		}
