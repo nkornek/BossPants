@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
 	{
 		foreach (GameObject person in GameObject.FindGameObjectsWithTag("person"))
 		{
-			if (Mathf.Abs (Vector2.Distance(person.transform.position, transform.position)) < triggerDistance)
+			if (Mathf.Abs (Vector2.Distance(person.transform.position, transform.position)) < triggerDistance && person.GetComponent <Person>().triggered == false)
 			{
 				//trigger some speech bubblin
 				person.GetComponent <Person>().triggered = true;
