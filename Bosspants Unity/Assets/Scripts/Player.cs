@@ -14,6 +14,8 @@ public class Player : MonoBehaviour {
 	public int damageTaken;
 	public float ejectForce;
 
+	public Audiosource audioguy;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -79,6 +81,7 @@ public class Player : MonoBehaviour {
 
 	public void LevelUp()
 	{
+		audioguy.GetInsideThePants ();
 		levelPants [level].SetActive (false);
 		level++;
 		gameObject.GetComponent<Character_movement> ().level ++;
