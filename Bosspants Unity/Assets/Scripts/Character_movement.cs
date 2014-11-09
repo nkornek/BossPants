@@ -4,7 +4,7 @@ using System.Collections;
 public class Character_movement : MonoBehaviour {
 	public float minSpeed, maxSpeed, moveSpeed, jumpForce, maxJumpForce;
 	public int jumpDecay;
-	public bool jumping;
+	public bool jumping, running;
 
 
 	// Use this for initialization
@@ -19,22 +19,41 @@ public class Character_movement : MonoBehaviour {
 		{
 			transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime, Space.Self);
 			ControlSpeed();
+			if (!jumping & !running)
+			{
+				gameObject.GetComponentInChildren<Animator>().SetTrigger("Running");
+				running = true;
+			}
 		}
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.Self);
 			ControlSpeed();
+			if (!jumping & !running)
+			{
+				gameObject.GetComponentInChildren<Animator>().SetTrigger("Running");
+				running = true;
+			}
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
+			if (!jumping)
+			{
+				jumping = true;
+				gameObject.GetComponentInChildren<Animator>().SetTrigger("Jump");
+			}
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
-			jumping = true;
 			ControlJump();
 		}
 
 		//reset the speed
 		if (!Input.GetKey(KeyCode.LeftArrow) & !Input.GetKey(KeyCode.RightArrow))
 		{
+			if (running)
+			{		
+				running = false;
+				gameObject.GetComponentInChildren<Animator>().SetTrigger("Run Stop");
+			}
 			moveSpeed = minSpeed;
 		}
 	
@@ -57,6 +76,7 @@ public class Character_movement : MonoBehaviour {
 		{
 			jumping = false;
 			jumpForce = maxJumpForce;
+			gameObject.GetComponentInChildren<Animator>().SetTrigger("JumpEnd");
 		}
 	}
 }

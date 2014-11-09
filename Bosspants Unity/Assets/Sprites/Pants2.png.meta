@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 860b36e3c3509b14e89971dee50ef1d9
+guid: 06dafb45164bf104aa3b212f608e4ebb
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Pants2
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
