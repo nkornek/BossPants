@@ -28,6 +28,7 @@ public class Person : MonoBehaviour
             {
                 transform.Translate(Vector2.right * speed * Time.deltaTime, Space.Self);
             }*/
+			print ("person triggered");
             transform.Translate ((player.transform.position - transform.position)/speed, Space.Self);
         }
     }

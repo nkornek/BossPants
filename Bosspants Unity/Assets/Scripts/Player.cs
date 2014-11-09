@@ -8,13 +8,16 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-	
+		if (Input.GetKey(KeyCode.Space))
+		{
+			CallPeople();
+		}
 	}
 
 	public void addPerson ()
@@ -25,12 +28,12 @@ public class Player : MonoBehaviour {
 
 	public void CallPeople() 
 	{
-		foreach (GameObject person in GameObject.FindGameObjectsWithTag("plapalpal"))
+		foreach (GameObject person in GameObject.FindGameObjectsWithTag("person"))
 		{
 			if (Mathf.Abs (Vector2.Distance(person.transform.position, transform.position)) < triggerDistance)
 			{
 				//trigger some speech bubblin
-				person.GetComponent <Person>.triggered = true;
+				person.GetComponent <Person>().triggered = true;
 			}
 		}
 	}
