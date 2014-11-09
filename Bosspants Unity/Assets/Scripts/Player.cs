@@ -64,11 +64,13 @@ public class Player : MonoBehaviour {
 		}
 		if (level == 0 & peoplePantsed == 5)
 		{
-			LevelUp();
+			levelPants[level].GetComponent<Animator>().SetTrigger ("SPINKIKKU");
+			//LevelUp();
 		}
 		if (level == 1 & peoplePantsed == 10)
 		{
-			LevelUp();
+			levelPants[level].GetComponent<Animator>().SetTrigger ("SPINKIKKU");
+			//LevelUp();
 		}
 	
 	}
