@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\BossTriggers.cs" />
      <Compile Include="Assets\CutsceneTrigger.cs" />
+     <Compile Include="Assets\Game_Music.cs" />
      <Compile Include="Assets\Scripts\Audiosource.cs" />
      <Compile Include="Assets\Scripts\BoomDamage.cs" />
      <Compile Include="Assets\Scripts\Camera.cs" />
