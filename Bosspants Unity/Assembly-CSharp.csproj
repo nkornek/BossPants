@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CutsceneTrigger.cs" />
+     <Compile Include="Assets\Scripts\Audiosource.cs" />
      <Compile Include="Assets\Scripts\BoomDamage.cs" />
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\Character_movement.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\InThePants.cs" />
      <Compile Include="Assets\Scripts\KickCollision.cs" />
      <Compile Include="Assets\Scripts\Level2.cs" />
      <Compile Include="Assets\Scripts\Person.cs" />
