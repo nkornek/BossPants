@@ -11,6 +11,9 @@ public class Player : MonoBehaviour {
 	public float kickTime, maxKickTime, kickForce;
 	public bool kicking;
 
+	public int damageTaken;
+	public float ejectForce;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -83,6 +86,23 @@ public class Player : MonoBehaviour {
 			{
 				//trigger some speech bubblin
 				person.GetComponent <Person>().triggered = true;
+			}
+		}
+	}
+
+	public void TakeDamage()
+	{
+		if (peoplePantsed > damageTaken)
+		{
+			peoplePantsed -= damageTaken;
+			int loss = 0;
+			while (loss < damageTaken)
+			{
+				GameObject person = Instantiate(Resources.Load("person"), transform.position, Quaternion.identity) as GameObject;
+				float randomX = Random.Range(-1, 1);
+				float randomY = Random.Range(0, 1);
+				person.GetComponent<Rigidbody2D>().AddForce(new Vector2(randomX, randomY) * ejectForce);
+				loss ++;
 			}
 		}
 	}
