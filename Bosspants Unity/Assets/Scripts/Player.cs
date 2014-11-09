@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	public float triggerDistance;
 	public int peoplePantsed, peopleToPants;
 	public float chargeTime, chargeTotal;
+	public Animator[] levelPants;
+	public int level;
 
 	// Use this for initialization
 	void Start () {
@@ -26,13 +28,14 @@ public class Player : MonoBehaviour {
 		}
 		if (Input.GetKeyUp(KeyCode.S))
 		{
+			print ("test");
 			if (chargeTime <= 0)
 			{
 				//bicycle kick
 			}
 			else
 			{
-				//regular kick
+				levelPants[level].SetTrigger("Kick");
 			}
 			chargeTime = chargeTotal;
 		}
@@ -55,6 +58,11 @@ public class Player : MonoBehaviour {
 				person.GetComponent <Person>().triggered = true;
 			}
 		}
+	}
+
+	public void levelUp ()
+	{
+
 	}
 
 }
