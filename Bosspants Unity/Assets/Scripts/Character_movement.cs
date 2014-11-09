@@ -19,29 +19,22 @@ public class Character_movement : MonoBehaviour {
 		{
 			transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime, Space.Self);
 			ControlSpeed();
-			if (!jumping & !running)
-			{
-				gameObject.GetComponentInChildren<Animator>().SetTrigger("Running");
-				running = true;
-			}
+			running = true;
+			gameObject.GetComponentInChildren<Animator>().SetBool("Running", true);
+			gameObject.GetComponentInChildren<Transform>().localScale = new Vector2(-1, 1);
 		}
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.Self);
 			ControlSpeed();
-			if (!jumping & !running)
-			{
-				gameObject.GetComponentInChildren<Animator>().SetTrigger("Running");
-				running = true;
-			}
+			gameObject.GetComponentInChildren<Animator>().SetBool("Running", true);
+			running = true;
+			gameObject.GetComponentInChildren<Transform>().localScale = new Vector2(1, 1);
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
-			if (!jumping)
-			{
-				jumping = true;
-				gameObject.GetComponentInChildren<Animator>().SetTrigger("Jump");
-			}
+			jumping = true;
+			gameObject.GetComponentInChildren<Animator>().SetBool("Jumping", true);
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
 			ControlJump();
 		}
@@ -52,7 +45,7 @@ public class Character_movement : MonoBehaviour {
 			if (running)
 			{		
 				running = false;
-				gameObject.GetComponentInChildren<Animator>().SetTrigger("Run Stop");
+				gameObject.GetComponentInChildren<Animator>().SetBool("Running", false);
 			}
 			moveSpeed = minSpeed;
 		}
@@ -74,9 +67,12 @@ public class Character_movement : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.transform.tag == "Ground")
 		{
-			jumping = false;
 			jumpForce = maxJumpForce;
-			gameObject.GetComponentInChildren<Animator>().SetTrigger("JumpEnd");
+			if (jumping)
+			{
+				jumping = false;
+				gameObject.GetComponentInChildren<Animator>().SetBool("Jumping", false);
+			}
 		}
 	}
 }
