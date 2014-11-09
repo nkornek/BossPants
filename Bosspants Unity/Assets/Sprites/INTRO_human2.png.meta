@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 844f7f6e4d1488b43b5c7086f95bbcb0
+guid: 94cec982cff00dc44b4dcfa2730ed7d1
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: INTRO_human2
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +37,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 500
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []

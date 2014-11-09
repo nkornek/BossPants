@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: c0ee389034ca838468d08a0b24b8b41f
+guid: df8e81e54c13fd944af5600000032c21
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: THE FIRST PANTS LEG 1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +37,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 500
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []

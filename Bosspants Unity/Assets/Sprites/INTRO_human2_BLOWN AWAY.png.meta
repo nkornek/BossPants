@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 61b80b36c216e6d469e47e37874c886d
+guid: e4f8cdc81c58a9846a901c5d267875a3
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: INTRO_human2_BLOWN AWAY
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +37,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 500
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []

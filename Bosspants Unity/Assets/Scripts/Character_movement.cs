@@ -5,6 +5,8 @@ public class Character_movement : MonoBehaviour {
 	public float minSpeed, maxSpeed, moveSpeed, jumpForce, maxJumpForce;
 	public int jumpDecay;
 	public bool jumping, running;
+	public GameObject[] levelPants;
+	public int level;
 
 	// Use this for initialization
 	void Start () {
@@ -19,21 +21,21 @@ public class Character_movement : MonoBehaviour {
 			transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime, Space.Self);
 			ControlSpeed();
 			running = true;
-			gameObject.GetComponentInChildren<Animator>().SetBool("Running", true);
-			gameObject.GetComponentInChildren<Transform>().localScale = new Vector2(-1, 1);
+			levelPants[level].GetComponent<Animator>().SetBool("Running", true);
+			levelPants[level].GetComponent<Transform>().localScale = new Vector2(-1, 1);
 		}
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.Self);
 			ControlSpeed();
-			gameObject.GetComponentInChildren<Animator>().SetBool("Running", true);
+			levelPants[level].GetComponent<Animator>().SetBool("Running", true);
 			running = true;
-			gameObject.GetComponentInChildren<Transform>().localScale = new Vector2(1, 1);
+			levelPants[level].GetComponent<Transform>().localScale = new Vector2(1, 1);
 		}
 		if (Input.GetKeyDown(KeyCode.A))
 		{
 			jumping = true;
-			gameObject.GetComponentInChildren<Animator>().SetBool("Jumping", true);
+			levelPants[level].GetComponent<Animator>().SetBool("Jumping", true);
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
 		}
 		if (jumping & Input.GetKey(KeyCode.A))
@@ -48,7 +50,7 @@ public class Character_movement : MonoBehaviour {
 			if (running)
 			{		
 				running = false;
-				gameObject.GetComponentInChildren<Animator>().SetBool("Running", false);
+				levelPants[level].GetComponent<Animator>().SetBool("Running", false);
 			}
 			moveSpeed = minSpeed;
 		}
@@ -74,8 +76,9 @@ public class Character_movement : MonoBehaviour {
 			if (jumping)
 			{
 				jumping = false;
-				gameObject.GetComponentInChildren<Animator>().SetBool("Jumping", false);
+				levelPants[level].GetComponent<Animator>().SetBool("Jumping", false);
 			}
 		}
 	}
+	
 }
