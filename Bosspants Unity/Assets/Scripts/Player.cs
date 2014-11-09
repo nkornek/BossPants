@@ -62,6 +62,14 @@ public class Player : MonoBehaviour {
 				levelPants[level].GetComponent<Animator>().SetBool("Kicking", false);
 			}
 		}
+		if (level == 0 & peoplePantsed == 5)
+		{
+			LevelUp();
+		}
+		if (level == 1 & peoplePantsed == 10)
+		{
+			LevelUp();
+		}
 	
 	}
 
@@ -76,13 +84,14 @@ public class Player : MonoBehaviour {
 		level++;
 		gameObject.GetComponent<Character_movement> ().level ++;
 		levelPants [level].SetActive (true);
+		Invoke ("LoadNextLevel", 1);
 	}
 
 	public void CallPeople() 
 	{
 		foreach (GameObject person in GameObject.FindGameObjectsWithTag("person"))
 		{
-			if (Mathf.Abs (Vector2.Distance(person.transform.position, transform.position)) < triggerDistance && person.GetComponent <Person>().triggered == false)
+			if (Mathf.Abs (Vector2.Distance(person.transform.position, transform.position)) < triggerDistance * (level + 1) && person.GetComponent <Person>().triggered == false)
 			{
 				//trigger some speech bubblin
 				person.GetComponent <Person>().triggered = true;
@@ -102,6 +111,12 @@ public class Player : MonoBehaviour {
 			loss ++;
 		}
 		peoplePantsed = 0;
+	}
+
+	
+	void LoadNextLevel()
+	{
+		Application.LoadLevel (Application.loadedLevel + 1);
 	}
 
 }
