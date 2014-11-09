@@ -65,7 +65,7 @@ public class Character_movement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.transform.tag == "Ground")
+		if (coll.transform.tag == "Ground" & transform.position.y > coll.transform.position.y)
 		{
 			jumpForce = maxJumpForce;
 			if (jumping)
