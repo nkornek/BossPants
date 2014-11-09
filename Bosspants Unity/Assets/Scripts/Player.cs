@@ -22,22 +22,32 @@ public class Player : MonoBehaviour {
 			CallPeople();
 		}
 	//kick!
-		if (Input.GetKey(KeyCode.S))
+		if (level == 2)
 		{
-			chargeTime -= Time.deltaTime;
-		}
-		if (Input.GetKeyUp(KeyCode.S))
-		{
-			print ("test");
-			if (chargeTime <= 0)
+			if (Input.GetKey(KeyCode.S))
 			{
-				//bicycle kick
+				chargeTime -= Time.deltaTime;
 			}
-			else
+			if (Input.GetKeyUp(KeyCode.S))
+			{
+				print ("test");
+				if (chargeTime <= 0)
+				{
+					//bicycle kick
+				}
+				else
+				{
+					levelPants[level].SetTrigger("Kick");
+				}
+				chargeTime = chargeTotal;
+			}
+		}
+		else
+		{
+			if (Input.GetKeyDown(KeyCode.S))
 			{
 				levelPants[level].SetTrigger("Kick");
 			}
-			chargeTime = chargeTotal;
 		}
 	
 	}
@@ -58,11 +68,6 @@ public class Player : MonoBehaviour {
 				person.GetComponent <Person>().triggered = true;
 			}
 		}
-	}
-
-	public void levelUp ()
-	{
-
 	}
 
 }
