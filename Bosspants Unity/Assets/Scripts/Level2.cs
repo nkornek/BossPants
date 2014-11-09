@@ -7,7 +7,7 @@ public class Level2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player.GetComponent <Player> ().LevelUp();
+		//player.GetComponent <Player> ().LevelUp();
 	}
 	
 	// Update is called once per frame
