@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 	public float triggerDistance;
 	public int peoplePantsed, peopleToPants;
 	public float chargeTime, chargeTotal;
-	public Animator[] levelPants;
+	public GameObject[] levelPants;
 	public int level;
 
 	// Use this for initialization
@@ -20,6 +20,11 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Space))
 		{
 			CallPeople();
+		}
+		//for debug, will remove later
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+			LevelUp();
 		}
 	//kick!
 		if (level == 2)
@@ -37,7 +42,7 @@ public class Player : MonoBehaviour {
 				}
 				else
 				{
-					levelPants[level].SetTrigger("Kick");
+					levelPants[level].GetComponent<Animator>().SetTrigger("Kick");
 				}
 				chargeTime = chargeTotal;
 			}
@@ -46,7 +51,7 @@ public class Player : MonoBehaviour {
 		{
 			if (Input.GetKeyDown(KeyCode.S))
 			{
-				levelPants[level].SetTrigger("Kick");
+				levelPants[level].GetComponent<Animator>().SetTrigger("Kick");
 			}
 		}
 	
@@ -55,6 +60,14 @@ public class Player : MonoBehaviour {
 	public void addPerson ()
 	{
 		peoplePantsed++;	
+	}
+
+	public void LevelUp()
+	{
+		levelPants [level].SetActive (false);
+		level++;
+		gameObject.GetComponent<Character_movement> ().level ++;
+		levelPants [level].SetActive (true);
 	}
 
 	public void CallPeople() 
