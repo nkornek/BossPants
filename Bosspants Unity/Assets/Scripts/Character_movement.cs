@@ -6,7 +6,6 @@ public class Character_movement : MonoBehaviour {
 	public int jumpDecay;
 	public bool jumping, running;
 
-
 	// Use this for initialization
 	void Start () {
 	
