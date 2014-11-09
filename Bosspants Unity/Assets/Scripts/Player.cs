@@ -5,13 +5,14 @@ public class Player : MonoBehaviour {
 
 	public float triggerDistance;
 	public int peoplePantsed, peopleToPants;
-	public float chargeTime, chargeTotal;
-	public Animator[] levelPants;
+	public GameObject[] levelPants;
 	public int level;
+
+	public float kickTime, maxKickTime, kickForce;
+	public bool kicking;
 
 	// Use this for initialization
 	void Start () {
-		chargeTime = chargeTotal;
 	}
 	
 	// Update is called once per frame
@@ -21,31 +22,57 @@ public class Player : MonoBehaviour {
 		{
 			CallPeople();
 		}
-	//kick!
-		if (Input.GetKey(KeyCode.S))
+		//for debug, will remove later
+		if (Input.GetKeyDown(KeyCode.F))
 		{
-			chargeTime -= Time.deltaTime;
+			LevelUp();
 		}
-		if (Input.GetKeyUp(KeyCode.S))
+	//kick!
+		if (level == 2)
 		{
-			print ("test");
-			if (chargeTime <= 0)
+			if (Input.GetKey(KeyCode.S) & !kicking & kickTime < maxKickTime)
 			{
-				//bicycle kick
+				kickTime += Time.deltaTime;
 			}
-			else
+			if (Input.GetKeyUp(KeyCode.S) & !kicking)
 			{
-				levelPants[level].SetTrigger("Kick");
+				kicking = true;
+				levelPants[level].GetComponent<Animator>().SetBool("Kicking", true);
 			}
-			chargeTime = chargeTotal;
+		}
+		else
+		{
+			if (Input.GetKeyDown(KeyCode.S))
+			{
+				levelPants[level].GetComponent<Animator>().SetTrigger("Kick");
+			}
+		}
+
+		//launch bicycle kick
+		if (kicking)
+		{
+			kickTime -= Time.deltaTime;
+			rigidbody2D.AddForce( Vector2.right * levelPants[level].transform.localScale.x * kickForce);
+			if (kickTime <= 0)
+			{
+				kicking = false;
+				levelPants[level].GetComponent<Animator>().SetBool("Kicking", false);
+			}
 		}
 	
 	}
 
 	public void addPerson ()
 	{
-		peoplePantsed++;
-	
+		peoplePantsed++;	
+	}
+
+	public void LevelUp()
+	{
+		levelPants [level].SetActive (false);
+		level++;
+		gameObject.GetComponent<Character_movement> ().level ++;
+		levelPants [level].SetActive (true);
 	}
 
 	public void CallPeople() 
@@ -58,11 +85,6 @@ public class Player : MonoBehaviour {
 				person.GetComponent <Person>().triggered = true;
 			}
 		}
-	}
-
-	public void levelUp ()
-	{
-
 	}
 
 }

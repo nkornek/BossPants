@@ -16,21 +16,24 @@ public class Character_movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//movement
-		if (Input.GetKey(KeyCode.LeftArrow))
+		if (!gameObject.GetComponent<Player>().kicking)
 		{
-			transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime, Space.Self);
-			ControlSpeed();
-			running = true;
-			levelPants[level].GetComponent<Animator>().SetBool("Running", true);
-			levelPants[level].GetComponent<Transform>().localScale = new Vector2(-1, 1);
-		}
-		if (Input.GetKey(KeyCode.RightArrow))
-		{
-			transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.Self);
-			ControlSpeed();
-			levelPants[level].GetComponent<Animator>().SetBool("Running", true);
-			running = true;
-			levelPants[level].GetComponent<Transform>().localScale = new Vector2(1, 1);
+			if (Input.GetKey(KeyCode.LeftArrow))
+			{
+				transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime, Space.Self);
+				ControlSpeed();
+				running = true;
+				levelPants[level].GetComponent<Animator>().SetBool("Running", true);
+				levelPants[level].GetComponent<Transform>().localScale = new Vector2(-1, 1);
+			}
+			if (Input.GetKey(KeyCode.RightArrow))
+			{
+				transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.Self);
+				ControlSpeed();
+				levelPants[level].GetComponent<Animator>().SetBool("Running", true);
+				running = true;
+				levelPants[level].GetComponent<Transform>().localScale = new Vector2(1, 1);
+			}
 		}
 		if (Input.GetKeyDown(KeyCode.A))
 		{
@@ -80,4 +83,5 @@ public class Character_movement : MonoBehaviour {
 			}
 		}
 	}
+	
 }
