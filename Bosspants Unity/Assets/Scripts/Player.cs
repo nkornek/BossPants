@@ -81,7 +81,7 @@ public class Player : MonoBehaviour {
 
 	public void LevelUp()
 	{
-		audioguy.GetInsideThePants ();
+		//audioguy.GetInsideThePants ();
 		levelPants [level].SetActive (false);
 		level++;
 		gameObject.GetComponent<Character_movement> ().level ++;

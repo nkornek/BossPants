@@ -12,10 +12,15 @@ public class Game_Music : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Application.loadedLevel == 3)
+		if (Application.loadedLevel == 3 & gameObject.GetComponent<AudioSource>().clip != bossMusic)
 		{
 			gameObject.GetComponent<AudioSource>().clip = bossMusic;
 			gameObject.GetComponent<AudioSource>().Play();
+		}
+
+		if (Input.GetKey(KeyCode.Escape))
+		{
+			Application.Quit();
 		}
 	
 	}

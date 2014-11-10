@@ -14,4 +14,9 @@ public class CutsceneTrigger : MonoBehaviour {
 		part1.Emit (50);
 		part2.Emit (50);
 	}
+
+	void EndGame()
+	{
+		Application.Quit();
+	}
 }
